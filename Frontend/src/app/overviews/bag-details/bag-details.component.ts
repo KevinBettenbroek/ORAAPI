@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { RollService, Roll } from '../../services/roll.service';
-import { BatchService, Batch } from '../../services/batch.service';
-import { OrderService, Order } from '../../services/order.service';
-import { ControleService, Check } from '../../services/controle.service';
+import { RollService } from '../../services/roll.service';
+import { BatchService } from '../../services/batch.service';
+import { OrderService } from '../../services/order.service';
+import { ControleService } from '../../services/controle.service';
+import { BagService } from '../../services/bag.service';
 import {
-  BagService,
-  Bag,
   Error,
   MissingPictures,
   MissingPills,
-} from '../../services/bag.service';
+  Bag,
+} from '../../models/bagModels';
+import { Check } from '../../models/controleModels';
 
 @Component({
   selector: 'app-bag-details',

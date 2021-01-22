@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { OrderService, Order } from '../../services/order.service';
+import { OrderService } from '../../services/order.service';
+import { Order } from '../../models/orderModels';
 
 @Component({
   selector: 'app-vrijgifte',

@@ -5,11 +5,7 @@ import { observable, Observable, of } from 'rxjs';
 import { Data, Router } from '@angular/router';
 import { ApiService } from './api.service';
 
-export interface Roll {
-  roll_NR: string;
-  batch_NR: string;
-  patient: string;
-}
+import { Roll } from '../models/rollModels';
 
 @Injectable({
   providedIn: 'root',

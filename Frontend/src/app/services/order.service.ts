@@ -5,11 +5,7 @@ import { observable, Observable, of } from 'rxjs';
 import { Data, Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 
-export interface Order {
-  order_NR: string;
-  institute: string;
-  order_released: boolean;
-}
+import { Order } from '../models/orderModels';
 
 @Injectable({
   providedIn: 'root',

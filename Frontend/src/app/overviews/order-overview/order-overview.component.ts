@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { RollService, Roll } from '../../services/roll.service';
-import { BatchService, Batch } from '../../services/batch.service';
-import { OrderService, Order } from '../../services/order.service';
+import { RollService } from '../../services/roll.service';
+import { BatchService } from '../../services/batch.service';
+import { OrderService } from '../../services/order.service';
+
+import { Order } from '../../models/orderModels';
 
 @Component({
   selector: 'app-order-overview',

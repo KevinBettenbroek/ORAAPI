@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { ControleService, Check } from '../../services/controle.service';
+import { ControleService } from '../../services/controle.service';
+
+import { Check } from '../../models/controleModels';
 
 @Component({
   selector: 'app-controle-loggen',

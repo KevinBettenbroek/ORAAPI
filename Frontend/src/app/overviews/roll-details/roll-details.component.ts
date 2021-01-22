@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { RollService, Roll } from '../../services/roll.service';
-import { BatchService, Batch } from '../../services/batch.service';
-import { OrderService, Order } from '../../services/order.service';
-import { BagService, Bag } from '../../services/bag.service';
-import { ControleService, Check } from '../../services/controle.service';
+import { RollService } from '../../services/roll.service';
+import { BatchService } from '../../services/batch.service';
+import { OrderService } from '../../services/order.service';
+import { BagService } from '../../services/bag.service';
+import { ControleService } from '../../services/controle.service';
+
+import { Bag } from '../../models/bagModels';
+import { Roll } from '../../models/rollModels';
+import { Check } from '../../models/controleModels';
 
 @Component({
   selector: 'app-roll-details',
@@ -16,7 +20,6 @@ export class RollDetailsComponent implements OnInit {
   bags: Bag[] = [];
   checks: Check[] = [];
   roll: Roll;
-  controles: any;
   roll_NR: string;
 
   constructor(

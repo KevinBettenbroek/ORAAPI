@@ -5,15 +5,7 @@ import { observable, Observable, of } from 'rxjs';
 import { Data, Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 
-export interface Check {
-  order_NR: string;
-  batch_NR: string;
-  roll_NR: string;
-  bag_NR: string;
-  check_type: string;
-  checked_by: string;
-  check_remarks: string;
-}
+import { Check } from '../models/controleModels';
 
 @Injectable({
   providedIn: 'root',
