@@ -10,6 +10,7 @@ import { ControleLoggenComponent } from './controles/controle-loggen/controle-lo
 import { HomeComponent } from './home/home.component';
 import { VrijgifteComponent } from './controles/vrijgifte/vrijgifte.component';
 import { BagDetailsComponent } from './overviews/bag-details/bag-details.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -17,8 +18,9 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'home',
+    path: '',
     component: HomeComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'logout',
@@ -27,30 +29,37 @@ const routes: Routes = [
   {
     path: 'orderOverview/:history',
     component: OrderOverviewComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'orderDetails/:order_NR',
     component: OrderDetailsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'batchDetails/:batch_NR',
     component: BatchDetailsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'rollDetails/:roll_NR',
     component: RollDetailsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'bagDetails/:bag_NR',
     component: BagDetailsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'controleLoggen',
     component: ControleLoggenComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'vrijgifte',
     component: VrijgifteComponent,
+    canActivate: [AuthGuard],
   },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];

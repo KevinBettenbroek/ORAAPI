@@ -1,4 +1,5 @@
 <nav class="navbar navbar-light bg-light navbar-toggler">
   <img class="navbar-center img-fluid max-width: 100% height:auto" src="assets/logo.png" alt="SPITS logo">
-  <button mat-raised-button color="primary" class=" btn-sm navbar-right" routerLink="/logout">Uitloggen</button>
+  <button *ngIf="user" mat-raised-button color="primary" class=" btn-sm navbar-right"
+    (click)='logout()'>Uitloggen</button>
 </nav>

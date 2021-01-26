@@ -2,8 +2,10 @@
   <div class="row py-lg-5 justify-content-center">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1>Inloggen</h1>
-      <br>
-      <button mat-raised-button color="primary" routerLink="/home">Scan uw RFID om in te loggen</button>
+      <button mat-raised-button color="primary" class="m-1" (click)='login(medewerker)'>Scan uw RFID om in te loggen
+        (Medewerker) </button>
+      <button mat-raised-button color="primary" class="m-1" (click)='login(apotheker)'>Scan uw RFID om in te loggen
+        (Apotheker)</button>
     </div>
   </div>
 </section>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../services/authentication.service';
+import { User } from '../models/userModel';
 
 @Component({
   selector: 'app-home',
@@ -6,19 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  medewerker: string;
+  user: User;
 
-  constructor() {
-    this.medewerker = 'Apotheker';
+  constructor(private authenticationService: AuthenticationService) {
+    this.user = authenticationService.currentUserValue;
   }
 
   ngOnInit(): void {}
-
-  change(): void {
-    if (this.medewerker == 'Medewerker') {
-      this.medewerker = 'Apotheker';
-    } else {
-      this.medewerker = 'Medewerker';
-    }
-  }
 }
