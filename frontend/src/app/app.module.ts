@@ -44,6 +44,7 @@ import { from } from 'rxjs';
     RouterModule.forRoot([]),
     BrowserAnimationsModule,
     MatSlideToggleModule,
+    MatButtonModule,
     OverviewsModule,
     ControlesModule,
     UserModule,
