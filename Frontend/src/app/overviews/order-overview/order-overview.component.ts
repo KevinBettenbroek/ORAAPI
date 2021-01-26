@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnInit,
+  ChangeDetectorRef,
+  ViewChild,
+} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { RollService } from '../../services/roll.service';
@@ -6,15 +12,27 @@ import { BatchService } from '../../services/batch.service';
 import { OrderService } from '../../services/order.service';
 
 import { Order } from '../../models/orderModels';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-order-overview',
   templateUrl: './order-overview.component.html',
   styleUrls: ['./order-overview.component.css'],
 })
-export class OrderOverviewComponent implements OnInit {
+export class OrderOverviewComponent implements AfterViewInit, OnInit {
   orders: Order[] = [];
   history: string = 'False';
+  displayedColumns: string[] = ['order'];
+
+  dataSource = new MatTableDataSource<Order>(this.orders);
+
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator!;
+  }
 
   constructor(
     private location: Location,
@@ -24,10 +42,6 @@ export class OrderOverviewComponent implements OnInit {
     private orderService: OrderService
   ) {}
 
-  setOrder(order: Order) {
-    this.orderService.setOrder(order);
-  }
-
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.history = params.get('history')!;
@@ -36,7 +50,16 @@ export class OrderOverviewComponent implements OnInit {
       .getOrders('?order_released=' + this.history)
       .subscribe((data) => {
         this.orders = data;
+        this.dataSource.data = data;
       });
+  }
+
+  setOrder(order: Order) {
+    this.orderService.setOrder(order);
+  }
+
+  doFilter(value: string) {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
   back(): void {

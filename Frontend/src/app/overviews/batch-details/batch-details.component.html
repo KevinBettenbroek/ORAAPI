@@ -123,18 +123,22 @@
           </table>
         </mat-tab>
         <mat-tab label="Aanwezige rollen">
-          <div *ngFor="let roll of rolls; index as roll_NR" [routerLink]="['/rollDetails/', roll.roll_NR]"
-            (click)="setRoll(roll)">
-            <mat-expansion-panel hideToggle>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Rol {{roll.roll_NR}}
-                </mat-panel-title>
-                <mat-panel-description>
-                  Aantal bijzondere controles
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-            </mat-expansion-panel>
+          <mat-form-field class="px-5">
+            <input matInput type="text" #filter (keyup)="doFilter(filter.value)" placeholder="Filter">
+          </mat-form-field>
+          <div>
+            <table mat-table [dataSource]="dataSource">
+
+              <ng-container matColumnDef="roll">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let roll"> {{roll.roll_NR}} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let roll; columns: displayedColumns"
+                [routerLink]="['/rollDetails/', roll.roll_NR]"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
           </div>
         </mat-tab>
         <mat-tab label="Controles">

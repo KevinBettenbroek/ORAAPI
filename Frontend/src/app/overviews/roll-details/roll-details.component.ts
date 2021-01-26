@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { RollService } from '../../services/roll.service';
@@ -11,16 +11,28 @@ import { Bag } from '../../models/bagModels';
 import { Roll } from '../../models/rollModels';
 import { Check } from '../../models/controleModels';
 
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+
 @Component({
   selector: 'app-roll-details',
   templateUrl: './roll-details.component.html',
   styleUrls: ['./roll-details.component.css'],
 })
-export class RollDetailsComponent implements OnInit {
+export class RollDetailsComponent implements AfterViewInit, OnInit {
   bags: Bag[] = [];
   checks: Check[] = [];
   roll: Roll;
   roll_NR: string;
+
+  displayedColumns: string[] = ['bag'];
+  dataSource = new MatTableDataSource<Bag>(this.bags);
+
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator!;
+  }
 
   constructor(
     private location: Location,
@@ -35,10 +47,6 @@ export class RollDetailsComponent implements OnInit {
     this.roll_NR = '';
   }
 
-  setRoll(roll: Roll) {
-    this.rollService.setRoll(roll);
-  }
-
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.roll_NR = params.get('roll_NR')!;
@@ -50,12 +58,21 @@ export class RollDetailsComponent implements OnInit {
     }
     this.bagService.getBags(this.roll_NR).subscribe((data) => {
       this.bags = data;
+      this.dataSource.data = data;
     });
     this.controleService
       .getChecks('?roll_NR=' + this.roll_NR)
       .subscribe((data) => {
         this.checks = data;
       });
+  }
+
+  setBag(bag: Bag) {
+    this.bagService.setBag(bag);
+  }
+
+  doFilter(value: string) {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
   back(): void {

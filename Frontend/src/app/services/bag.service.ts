@@ -29,6 +29,10 @@ export class BagService {
     };
   }
 
+  setBag(bag: Bag) {
+    this.bag = bag;
+  }
+
   getBag(bag_NR: string) {
     return this.http
       .get(this.apiService.getApiUrl() + 'bag/' + bag_NR + '/')

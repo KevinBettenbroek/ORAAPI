@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { formatDate, Location } from '@angular/common';
 import { RollService } from '../../services/roll.service';
@@ -9,18 +9,29 @@ import { ControleService } from '../../services/controle.service';
 import { Batch, BatchRow } from '../../models/batchModels';
 import { Roll } from '../../models/rollModels';
 import { Check } from '../../models/controleModels';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-batch-details',
   templateUrl: './batch-details.component.html',
   styleUrls: ['./batch-details.component.css'],
 })
-export class BatchDetailsComponent implements OnInit {
+export class BatchDetailsComponent implements AfterViewInit, OnInit {
   rolls: Roll[] = [];
   batchRows: BatchRow[] = [];
   checks: Check[] = [];
   batch: Batch;
   batch_NR: string;
+
+  displayedColumns: string[] = ['roll'];
+  dataSource = new MatTableDataSource<Roll>(this.rolls);
+
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator!;
+  }
 
   constructor(
     private location: Location,
@@ -48,6 +59,7 @@ export class BatchDetailsComponent implements OnInit {
     });
     this.rollService.getRols(this.batch_NR).subscribe((data) => {
       this.rolls = data;
+      this.dataSource.data = data;
     });
     this.controleService
       .getChecks('?batch_NR=' + this.batch_NR)
@@ -62,6 +74,10 @@ export class BatchDetailsComponent implements OnInit {
 
   setRoll(roll: Roll) {
     this.rollService.setRoll(roll);
+  }
+
+  doFilter(value: string) {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
   back(): void {
