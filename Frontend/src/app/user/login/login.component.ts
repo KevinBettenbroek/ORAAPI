@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   apotheker: User = {
     id: 1,
     userType: 'Apotheker',
-    username: 'apotheker',
+    username: 'medewerker',
     password: 'goedwachtwoord',
     firstName: 'Jan',
     lastName: 'de Boer',

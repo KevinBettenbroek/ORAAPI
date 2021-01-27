@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Bag',
             fields=[
-                ('bag_NR', models.IntegerField(primary_key=True, serialize=False)),
+                ('bag_NR', models.CharField(primary_key=True, serialize=False, max_length=30)),
                 ('bag_type', models.CharField(choices=[('PREBAG', 'Voorloopzakje'), ('MEDICATIONBAG', 'Medicatiezakje'), ('AFTERBAG', 'Naloopzakje')], max_length=15)),
             ],
         ),

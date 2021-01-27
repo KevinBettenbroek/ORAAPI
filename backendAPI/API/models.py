@@ -90,7 +90,7 @@ class Bag(models.Model):
         (AFTER_BAG, "Naloopzakje")
     ]
 
-    bag_NR = models.IntegerField(primary_key=True)
+    bag_NR = models.CharField(primary_key=True, max_length=BATCH_NUMBER_LENGTH)
     roll_NR = models.ForeignKey(Roll, on_delete=models.CASCADE)
     bag_type = models.CharField(
         max_length=15,
