@@ -34,7 +34,7 @@ describe('BatchDetailsComponent', () => {
         MatFormFieldModule,
         MatInputModule,
         BrowserAnimationsModule,
-        FormsModule
+        FormsModule,
       ],
     }).compileComponents();
   });

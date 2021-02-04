@@ -34,7 +34,7 @@ describe('RollDetailsComponent', () => {
         MatFormFieldModule,
         MatInputModule,
         BrowserAnimationsModule,
-        FormsModule
+        FormsModule,
       ],
     }).compileComponents();
   });

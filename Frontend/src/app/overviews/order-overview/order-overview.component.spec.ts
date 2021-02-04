@@ -34,7 +34,7 @@ describe('OrderOverviewComponent', () => {
         MatFormFieldModule,
         MatInputModule,
         BrowserAnimationsModule,
-        FormsModule
+        FormsModule,
       ],
     }).compileComponents();
   });
