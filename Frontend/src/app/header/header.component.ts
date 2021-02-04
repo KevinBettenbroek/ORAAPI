@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { User } from '../models/userModel';
 import { AuthenticationService } from '../services/authentication.service';
 

@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
@@ -24,6 +23,7 @@ describe('VrijgifteComponent', () => {
         MatButtonModule,
         MatDividerModule,
         MatListModule,
+        MatFormFieldModule,
         FormsModule,
       ],
     }).compileComponents();

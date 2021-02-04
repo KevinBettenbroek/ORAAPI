@@ -113,7 +113,7 @@ describe('BatchService', () => {
     });
 
     const req = httpTestingController.expectOne(
-      'http://localhost:8000/api/batch/?order_NR=1'
+      'http://localhost:8000/api/batch/?orderbatch__order_NR=1'
     );
 
     expect(req.request.method).toEqual('GET');

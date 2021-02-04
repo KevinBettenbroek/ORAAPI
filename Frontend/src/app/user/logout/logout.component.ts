@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
-import { User } from '../../models/userModel';
 
 @Component({
   selector: 'app-logout',
@@ -10,7 +9,6 @@ import { User } from '../../models/userModel';
 })
 export class LogoutComponent implements OnInit {
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService
   ) {

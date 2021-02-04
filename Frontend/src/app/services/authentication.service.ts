@@ -30,4 +30,12 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null!);
   }
+
+  isLoggedIn() {
+    if (this.currentUserValue) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

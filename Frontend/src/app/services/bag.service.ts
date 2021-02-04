@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
-import { observable, Observable, of } from 'rxjs';
-import { Data, Router } from '@angular/router';
+import { of } from 'rxjs';
+import { Router } from '@angular/router';
 import { ApiService } from './api.service';
 
 import { Bag, Error, MissingPills, MissingPictures } from '../models/bagModels';

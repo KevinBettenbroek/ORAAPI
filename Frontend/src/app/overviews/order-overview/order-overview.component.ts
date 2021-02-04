@@ -2,10 +2,9 @@ import {
   AfterViewInit,
   Component,
   OnInit,
-  ChangeDetectorRef,
   ViewChild,
 } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { RollService } from '../../services/roll.service';
 import { BatchService } from '../../services/batch.service';
@@ -14,7 +13,6 @@ import { OrderService } from '../../services/order.service';
 import { Order } from '../../models/orderModels';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-order-overview',

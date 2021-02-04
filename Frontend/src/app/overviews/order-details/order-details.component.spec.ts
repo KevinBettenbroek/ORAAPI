@@ -8,6 +8,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { OrderDetailsComponent } from './order-details.component';
@@ -27,7 +30,11 @@ describe('OrderDetailsComponent', () => {
         MatTableModule,
         MatExpansionModule,
         MatDividerModule,
+        MatPaginatorModule,
+        MatFormFieldModule,
+        MatInputModule,
         BrowserAnimationsModule,
+        FormsModule
       ],
     }).compileComponents();
   });

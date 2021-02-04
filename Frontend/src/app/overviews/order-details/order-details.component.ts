@@ -1,11 +1,10 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { RollService } from '../../services/roll.service';
 import { BatchService } from '../../services/batch.service';
 import { OrderService } from '../../services/order.service';
 import { ControleService } from '../../services/controle.service';
-import { from } from 'rxjs';
 
 import { Order } from '../../models/orderModels';
 import { Batch } from '../../models/batchModels';

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
-import { observable, Observable, of } from 'rxjs';
-import { Data, Router } from '@angular/router';
+import { of } from 'rxjs';
+import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 
 import { Batch, BatchRow } from '../models/batchModels';
@@ -76,7 +76,9 @@ export class BatchService {
 
   getBatches(order_NR: string) {
     return this.http
-      .get(this.apiService.getApiUrl() + 'batch/?orderbatch__order_NR=' + order_NR)
+      .get(
+        this.apiService.getApiUrl() + 'batch/?orderbatch__order_NR=' + order_NR
+      )
       .pipe(
         map((result) => {
           this.batches = result as Batch[];
