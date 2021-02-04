@@ -31,13 +31,10 @@ class Batch(models.Model):
     DB = models.CharField(max_length=NAME_LENGTH)
     leave_datetime = models.DateTimeField()
     forward_datetime = models.DateTimeField()
-    remarks_end_control = models.CharField(max_length=REMARK_LENGTH, blank=True, null=True)
 
     # Inspector Batch Report
-    checked_by = models.CharField(max_length=NAME_LENGTH)
     start_datetime = models.DateTimeField()
     end_datetime = models.DateTimeField()
-    inspector = models.CharField(max_length=NAME_LENGTH)
     batch_started = models.DateTimeField()
     total_NR_bags = models.IntegerField()
     bags_checked = models.IntegerField()

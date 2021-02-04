@@ -25,7 +25,7 @@ class BatchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Batch
         fields = ['batch_NR', 'machine_ID', 'packaging_code', 'DB', 'leave_datetime', 'forward_datetime',
-                  'remarks_end_control', 'checked_by', 'start_datetime', 'end_datetime', 'inspector', 'batch_started',
+                  'start_datetime', 'end_datetime', 'batch_started',
                   'total_NR_bags', 'bags_checked', 'total_NR_patients', 'bags_rejected', 'NR_to_double_check',
                   'double_checked']
 
